@@ -70,6 +70,12 @@ EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="a
               >
             </div>
             <div class="content-menu">
+              <i class="fa fa-film"></i>
+              <a href="./listSeriesPage.php" style="fontweight: 600"
+                >List Series</a
+              >
+            </div>
+            <div class="content-menu">
               <i class="fa fa-sign-out"></i>
               <a href="../process/logoutProcess.php" style="fontweight: 600"
                 >&nbspLogout</a
