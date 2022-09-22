@@ -1,4 +1,4 @@
-<?php 
+ <?php 
     if(isset($_POST['create'])){
 
     include('../db.php');
@@ -11,7 +11,23 @@
     $synopsis = $_POST['synopsis'];
 
     $query = "INSERT INTO series VALUES('', '$name', '$genre', '$realease', '$episode', '$season', '$synopsis')";
-    $result = mysqli_query($con, $query);
-    return mysqli_affected_rows($con);
+    if($query){
+        echo
+        '<script>
+        alert("Add Series Success!");
+        window.location = "../page/listSeriesPage.php"
+        </script>';
+    }else{
+        echo
+        '<script>
+        alert("Add Series Failed!");
+        </script>';
+    }
+}else{
+    echo
+    '<script>
+    window.history.back()
+    </script>';
 }
-?>
+
+?> 

@@ -1,53 +1,46 @@
 <?php
-// untuk ngecek tombol yang namenya 'register' sudah di pencet atau belum
-// $_POST itu method di formnya
+
 if (isset($_POST['register'])) {
-   
-    // untuk mengoneksikan dengan database dengan memanggil file db.php
     include('../db.php');
-    // tampung nilai yang ada di from ke variabel
-    // sesuaikan variabel name yang ada di registerPage.php disetiap input
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $name = $_POST['name'];
     $phonenum = $_POST['phonenum'];
     $membership = $_POST['membership'];
-    // Melakukan insert ke databse dengan query dibawah ini
-    $query = mysqli_query($con,
+
+    $isEmailAlready = mysqli_query($con, "SELECT * FROM users WHERE email = '$email'") or die(mysqli_error($con));
+
+    if (mysqli_num_rows($isEmailAlready) == 0) {
+        $query = mysqli_query(
+            $con,
             "INSERT INTO users(email, password, name, phonenum, membership)
         VALUES
-        ('$email', '$password', '$name', '$phonenum', '$membership')")
-    or die(mysqli_error($con)); // perintah mysql yang gagal dijalankan ditangani oleh perintah “or die”
-    $isEmailAlready = "SELECT email from users WHERE email='$email'";
-    $checkEmail = mysqli_query($con, $isEmailAlready);
-    // perintah mysql yang gagal dijalankan ditangani oleh perintah “or die”
-    if($checkEmail){
-        echo
-        '<script>
-        alert("Email is already taken, Failed to Register!");
-        window.location = "../index.php"
-        </script>';
+            ('$email', '$password', '$name', '$phonenum', '$membership')"
+        )
+            or die(mysqli_error($con));
 
-        return;
-    }
-    if($query){
-        echo
+        if ($query) {
+            echo
             '<script>
             alert("Register Success");
             window.location = "../index.php"
             </script>';
-    }else{
-        echo
+        } else {
+            echo
             '<script>
             alert("Register Failed");
             </script>';
-    }
-    }else{
+        }
+    } else {
         echo
-            '<script>
-            window.history.back()
-            </script>';
-            }
-
-    
-?>
+        '<script>
+        alert("Email Already Taken!!");
+        window.location = "../page/registerPage.php";
+    </script>';
+    }
+} else {
+    echo
+    '<script>
+window.history.back()
+</script>';
+}
