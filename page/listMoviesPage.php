@@ -6,6 +6,11 @@ solid #D40013; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 
 0.19);">
     <div class="body d-flex justify-content-between">
         <h4>LIST MOVIE</h4>
+        <a href="../page/addMoviesPage.php">
+            <p style="float: right">
+            <i style ="color: black" class="fa fa-plus fa-2x"></i>
+            </p>
+        </a>
     </div>
     <hr>
     <table class="table ">
@@ -29,19 +34,26 @@ solid #D40013; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 
                 $no = 1;
                 while ($data = mysqli_fetch_assoc($query)) {
                     echo '
-<tr>
-<th scope="row">' . $no . '</th>
-<td>' . $data['name'] . '</td>
-<td>' . $data['genre'] . '</td>
-<td>' . $data['realese'] . '</td>
-<td>' . $data['season'] . '</td>
-<td>
-<a href="../process/deleteMovieProcess.php?id=' . $data['id'] . '"
-onClick="return confirm ( \'Are you sure want to delete this
-data?\')"> <i style="color: red" class="fa fa-trash fa-2x"></i>
-</a>
-</td>
-</tr>';
+            <tr>
+                <th scope="row">' . $no . '</th>
+                <td>' . $data['name'] . '</td>
+                <td>' . $data['genre'] . '</td>
+                <td>' . $data['realese'] . '</td>
+                <td>' . $data['season'] . '</td>
+                <td>
+                    <a href="../page/editMoviesPage.php?id='.$data['id'].'"
+                    onClick="return confirm ( \'Are you sure want to edit this data?\')"> 
+                    <i style="color: green" class="fa fa-edit fa-2x"></i>
+                    </a>
+ 
+                    </a>
+                    <a href="../process/deleteMoviesProcess.php?id=' . $data['id'] . '"
+                    onClick="return confirm ( \'Are you sure want to delete this
+                    data?\')"> 
+                    <i style="color: red" class="fa fa-trash fa-2x"></i>
+                    </a>
+                    </td>
+            </tr>';
                     $no++;
                 }
             }
@@ -52,4 +64,5 @@ data?\')"> <i style="color: red" class="fa fa-trash fa-2x"></i>
 </aside>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
+
 </html>

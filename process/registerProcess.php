@@ -2,6 +2,7 @@
 // untuk ngecek tombol yang namenya 'register' sudah di pencet atau belum
 // $_POST itu method di formnya
 if (isset($_POST['register'])) {
+   
     // untuk mengoneksikan dengan database dengan memanggil file db.php
     include('../db.php');
     // tampung nilai yang ada di from ke variabel
@@ -12,30 +13,41 @@ if (isset($_POST['register'])) {
     $phonenum = $_POST['phonenum'];
     $membership = $_POST['membership'];
     // Melakukan insert ke databse dengan query dibawah ini
-    $query = mysqli_query(
-        $con,
-        "INSERT INTO users(email, password, name, phonenum, membership)
-VALUES
-('$email', '$password', '$name', '$phonenum', '$membership')"
-    )
-        or die(mysqli_error($con));
+    $query = mysqli_query($con,
+            "INSERT INTO users(email, password, name, phonenum, membership)
+        VALUES
+        ('$email', '$password', '$name', '$phonenum', '$membership')")
+    or die(mysqli_error($con)); // perintah mysql yang gagal dijalankan ditangani oleh perintah “or die”
+    $isEmailAlready = "SELECT email from users WHERE email='$email'";
+    $checkEmail = mysqli_query($con, $isEmailAlready);
     // perintah mysql yang gagal dijalankan ditangani oleh perintah “or die”
-    if ($query) {
+    if($checkEmail){
         echo
         '<script>
-alert("Register Success");
-window.location = "../index.php"
-</script>';
-    } else {
-        echo
-        '<script>
-alert("Register Failed");
-</script>';
+        alert("Email is already taken, Failed to Register!");
+        window.location = "../index.php"
+        </script>';
+
+        return;
     }
-} else {
-    echo
-    '<script>
-window.history.back()
-</script>';
-}
+    if($query){
+        echo
+            '<script>
+            alert("Register Success");
+            window.location = "../index.php"
+            </script>';
+    }else{
+        echo
+            '<script>
+            alert("Register Failed");
+            </script>';
+    }
+    }else{
+        echo
+            '<script>
+            window.history.back()
+            </script>';
+            }
+
+    
 ?>

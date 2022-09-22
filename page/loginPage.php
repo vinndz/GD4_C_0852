@@ -13,12 +13,12 @@
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container">
             <!-- Nama : nama panggilan kalian -->
-            <a class="navbar-brand fw-bold" href="/gd4_x_yyyy">PHP - Nama</a>
+            <a class="navbar-brand fw-bold" href="/gd4_x_yyyy">PHP - Jeremy</a>
         </div>
     </nav>
     <div class="bg bg-light text-dark">
 
-        <div class="container min-vh-100 d-flex align-items-center justify-contentcenter">
+        <div class="container min-vh-100 d-flex align-items-center justify-content-center">
             <div class="card text-white bg-dark ma-5 shadow" style="min-width:25rem;">
                 <div class="card-header fw-bold">Login</div>
                 <div class="card-body">
