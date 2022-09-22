@@ -1,33 +1,36 @@
- <?php 
-    if(isset($_POST['create'])){
+<?php
+if (isset($_POST['create'])) {
 
     include('../db.php');
-
     $name = $_POST['name'];
-    $genre = implode (", ", $_POST["genre"]);
+    $genre = implode(", ", $_POST["genre"]);
     $realease = $_POST['realease'];
     $episode = $_POST['episode'];
     $season = $_POST['season'];
     $synopsis = $_POST['synopsis'];
+    $query = mysqli_query(
+        $con,
+        "INSERT INTO series(name, genre, realease, episode, season, synopsis)
+        VALUES
+        ('$name', '$genre', '$realease', '$episode', '$season', '$synopsis')"
+    )
+        or die(mysqli_error($con)); 
 
-    $query = "INSERT INTO series VALUES('', '$name', '$genre', '$realease', '$episode', '$season', '$synopsis')";
-    if($query){
+    if ($query) {
         echo
         '<script>
-        alert("Add Series Success!");
-        window.location = "../page/listSeriesPage.php"
+        alert("Create Series Success"); window.location = "../page/listSeriesPage.php"
         </script>';
-    }else{
+    } else {
         echo
         '<script>
-        alert("Add Series Failed!");
+        alert("Add Series Failed");
         </script>';
     }
-}else{
-    echo
-    '<script>
-    window.history.back()
-    </script>';
+    } else {
+        echo
+        '<script>
+        window.history.back()
+        </script>';
 }
-
-?> 
+?>

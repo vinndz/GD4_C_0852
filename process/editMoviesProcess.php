@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['editMovie'])) {
+if (isset($_POST['edit'])) {
 
     include('../db.php');
     $id = $_GET['id'];

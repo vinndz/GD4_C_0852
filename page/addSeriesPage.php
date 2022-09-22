@@ -14,9 +14,9 @@
                 <label for="genre">Genre</label>
                 <select name="genre[]" id="genre" class="form-select" multiple aria-label="multiple select example"
                     multiple>
-                    <option value="Action">Action</option>
-                    <option value="Comedy">Comedy</option>
-                    <option value="Romance">Romance</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Thriller">Thriller</option>
                 </select>
             </div>
             <div class="mb-3">

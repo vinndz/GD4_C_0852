@@ -1,19 +1,19 @@
 <?php
 
-if (isset($_POST['editMovie'])) {
+if (isset($_POST['edit'])) {
 
     include('../db.php');
-    $id = $_GET['id'];
     $name = $_POST['name'];
-    $genre = $_POST['genre'];
-    $realese = $_POST['realese'];
+    $genre = implode(", ", $_POST["genre"]);
+    $realease = $_POST['realease'];
     $episode = $_POST['episode'];
     $season = $_POST['season'];
     $synopsis = $_POST['synopsis'];
+
     $query = mysqli_query(
         $con,
         "UPDATE series SET name = '$name', genre = '$genre', 
-        realese = '$realese',episode = '$episode',season = '$season', synopsis = '$synopsis' WHERE id='$id'"
+        realease = '$realease',episode = '$episode',season = '$season', synopsis = '$synopsis' WHERE id='$id'"
     )
         or die(mysqli_error($con)); 
 

@@ -65,7 +65,7 @@ $synopsisMovies = $data["synopsis"];
         </div>
 
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary" name="editMovie">Edit Movies</button>
+            <button type="submit" class="btn btn-primary" name="edit">Edit Movies</button>
         </div>
     </form>
 </div>
