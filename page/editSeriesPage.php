@@ -28,10 +28,10 @@ $synopsisSeries = $data["synopsis"];
       <select class="form-select" aria-label="multiple select example" name="genre[]" id="genre" multiple value=<?php
                     $array = array("Thriller", "Comedy", "Fantasy");
                     session_start();
-                    $genreSeries = $_SESSION['genreSeries'];
+                    $genreS = $_SESSION['genreSeries'];
                     foreach($array as $value=>$name)
                     {
-                        if($name == $genreSeries)
+                        if($name == $genreS)
                         {
                              echo "<option selected value='".$name."'>".$name."</option>";
                         }
@@ -41,7 +41,7 @@ $synopsisSeries = $data["synopsis"];
                         }
                     }
                 ?>
-                </select>
+      </select>
     </div>
 
     <div class="mb-3">
